@@ -4,6 +4,7 @@ package br.ufma.lsdi.administrador.retrofit;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import br.ufma.lsdi.administrador.service.ResultadoService;
 import br.ufma.lsdi.administrador.service.TipoUsuarioService;
 import br.ufma.lsdi.administrador.service.UsuarioLocalizacaoService;
 import br.ufma.lsdi.administrador.service.UsuarioService;
@@ -44,6 +45,18 @@ public class RetrofitInicializador {
     }
 
     public UsuarioLocalizacaoService salvarTrajeto() {
+        return retrofit.create(UsuarioLocalizacaoService.class);
+    }
+
+    public UsuarioLocalizacaoService getAllTrajeto() {
+        return retrofit.create(UsuarioLocalizacaoService.class);
+    }
+
+    public ResultadoService getStatusUsuario() {
+        return retrofit.create(ResultadoService.class);
+    }
+
+    public UsuarioLocalizacaoService getUusarioLocalizacaoByTrajeto(){
         return retrofit.create(UsuarioLocalizacaoService.class);
     }
 }

@@ -73,8 +73,7 @@ public class TrajetoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trajeto, container, false);
         ButterKnife.bind(this, view);
-        // presos = new ArrayList<Preso>();
-        //presos = (List<Preso>) bundle.getSerializable("presos");
+
         usuarioLocalizacaos = new ArrayList<UsuarioLocalizacao>();
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_trajeto);
         mLayoutManager = new LinearLayoutManager(context);
@@ -83,10 +82,6 @@ public class TrajetoFragment extends Fragment {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         try {
-            //TODO modificar aqui também
-            // Bundle bundle = getArguments();
-            //usuario = new Usuario();
-            //usuario = (Usuario) bundle.getSerializable("usuario");
             getTrajetos();
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,9 +115,7 @@ public class TrajetoFragment extends Fragment {
     private void getTrajetos() throws Exception {
         swipeRefreshLayout.setRefreshing(true);
         try {
-            //TODO Modificar aqui para que retorne todos os trajetos indepente de usuário
-
-            Call<List<UsuarioLocalizacao>> call = new RetrofitInicializador().getTrajeto().getTrajeto(new Usuario(28L));
+            Call<List<UsuarioLocalizacao>> call = new RetrofitInicializador().getAllTrajeto().getAllTrajeto();
             call.enqueue(new Callback<List<UsuarioLocalizacao>>() {
                 @Override
                 public void onResponse(Call<List<UsuarioLocalizacao>> call, Response<List<UsuarioLocalizacao>> response) {
